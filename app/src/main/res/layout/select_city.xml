@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/city_select_bg"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dip"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dip"
+            android:layout_marginBottom="5dip"
+            android:text="@string/addcity"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dip"
+            android:background="@mipmap/city_select_line">
+
+            <Button
+                android:id="@+id/search_city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/search_city_change" />
+
+            <EditText
+                android:id="@+id/input_name"
+                android:layout_width="250dip"
+                android:layout_height="20dip"
+                android:layout_marginTop="2dip"
+                android:text=""
+                android:background="@null"
+                android:hint="@string/inputcity"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dip"
+        android:layout_marginTop="15dip"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/text_style"
+            android:textSize="24sp"
+            android:text="@string/hotcity" />
+
+        <GridView
+            android:id="@+id/citylist"
+            android:layout_width="480dip"
+            android:layout_height="200dip"
+            android:numColumns="5"
+            android:verticalSpacing="10dip"
+            android:horizontalSpacing="20dip"
+            android:listSelector="#00000000"/>
+    </LinearLayout>
+
+</LinearLayout>

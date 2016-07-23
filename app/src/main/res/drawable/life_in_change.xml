@@ -1,0 +1,7 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item 
+        android:state_pressed="true"
+        android:drawable="@mipmap/life_in_p"/>
+    <item
+        android:drawable="@mipmap/life_in"/>
+</selector>

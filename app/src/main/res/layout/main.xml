@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <ImageView
+        android:id="@+id/main_bg_before"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/big_wind"/>
+
+    <solo.robotium.com.qianjiaochen.weather.view.GalleryFlow
+        android:id="@+id/main_gallery"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:spacing="2dp"
+        android:background="@mipmap/cityweather_bg"
+        android:layout_marginTop="10dip"
+        android:layout_marginBottom="10dip"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:visibility="visible"/>
+
+    <LinearLayout
+        android:id="@+id/CWV_LinearLayout_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_alignTop="@+id/main_gallery"
+        android:background="@mipmap/cityweather_top"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <ImageButton
+            android:id="@+id/cityweather_refresh"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:background="@drawable/cityweather_refresh_change"/>
+
+        <ImageButton
+            android:id="@+id/cityweather_add"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="25dip"
+            android:background="@drawable/cityweather_add_change"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/main_first_RelativeLayout"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:visibility="gone">
+        <Button
+            android:id="@+id/main_add_firstcity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/addcity"
+            android:textColor="@drawable/text_change"
+            android:background="@mipmap/main_add_firstcity"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+</RelativeLayout>

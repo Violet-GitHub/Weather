@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="autocity">#ffffff</color>
+    <color name="selected">#8a8c8e</color>
+    
+	<color name="black">#000000</color> <!--黑色 -->
+	<color name="lightblue">#ADD8E6</color><!--亮蓝色 -->
+
+</resources>

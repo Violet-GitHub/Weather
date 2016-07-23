@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cityName"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/cityName" />
+
+    <ImageView
+        android:layout_toRightOf="@+id/cityName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/sun_1"
+        android:id="@+id/weather_img" />
+
+    <RelativeLayout
+        android:id="@+id/relative_temp"
+        android:layout_below="@+id/weather_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/weather_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/weather_temp"
+            android:textSize="50sp"/>
+
+        <TextView
+            android:id="@+id/weater_temp_cymbol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/weather_temp_cymbol"
+            android:layout_alignTop="@+id/weather_temp"
+            android:layout_marginTop="10dip"
+            android:layout_toRightOf="@+id/weather_temp"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/relative_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/weather"
+            android:id="@+id/weather" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/cityweather_line_h"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/weather_WD" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/weather_SD" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/weather_time" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_height="200dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/cal_LinearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/pre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pre"/>
+            <TextView
+                android:id="@+id/currentYM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/currentYM"/>
+            <TextView
+                android:id="@+id/next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/next"/>
+        </LinearLayout>
+
+        <solo.robotium.com.qianjiaochen.weather.view.CalendarGallery
+            android:id="@+id/calendarView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:spacing="2dp"/>
+    </LinearLayout>
+
+</RelativeLayout>
