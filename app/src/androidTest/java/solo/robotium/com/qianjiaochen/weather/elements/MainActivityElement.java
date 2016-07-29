@@ -15,6 +15,7 @@ import solo.robotium.com.qianjiaochen.weather.activity.MainActivity;
 public class MainActivityElement {
     public Solo mSolo=null;
     public ImageButton cityweather_add,cityweather_refresh;
+    public Button main_add_firstcity;
     private static MainActivityElement mainActivityElement;
 
     private MainActivityElement(Solo solo){
@@ -31,6 +32,15 @@ public class MainActivityElement {
     public void init(){
         cityweather_add=(ImageButton)mSolo.getCurrentActivity().findViewById(R.id.cityweather_add);
         cityweather_refresh=(ImageButton)mSolo.getCurrentActivity().findViewById(R.id.cityweather_refresh);
+        main_add_firstcity=(Button)mSolo.getCurrentActivity().findViewById(R.id.main_add_firstcity);
+    }
+
+    public void flag(){
+
+    }
+
+    public void clickMain_add_firstcity(){
+        mSolo.clickOnView(main_add_firstcity);
     }
 
     public void clickCityweather_add(){
