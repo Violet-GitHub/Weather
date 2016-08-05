@@ -13,26 +13,26 @@ import solo.robotium.com.qianjiaochen.weather.activity.MainActivity;
  * Created by qianjiaochen on 16/7/20.
  */
 public class MainActivityElement {
-    public Solo mSolo=null;
+    public Solo solo=null;
     public ImageButton cityweather_add,cityweather_refresh;
     public Button main_add_firstcity;
     private static MainActivityElement mainActivityElement;
 
-    private MainActivityElement(Solo solo){
-        mSolo=solo;
+    private MainActivityElement(Solo msolo){
+        solo=msolo;
         init();
     }
-    public static MainActivityElement getInstance(Solo solo){
+    public static MainActivityElement getInstance(Solo msolo){
         if(mainActivityElement==null){
-            mainActivityElement=new MainActivityElement(solo);
+            mainActivityElement=new MainActivityElement(msolo);
         }
         return mainActivityElement;
     }
 
     public void init(){
-        cityweather_add=(ImageButton)mSolo.getCurrentActivity().findViewById(R.id.cityweather_add);
-        cityweather_refresh=(ImageButton)mSolo.getCurrentActivity().findViewById(R.id.cityweather_refresh);
-        main_add_firstcity=(Button)mSolo.getCurrentActivity().findViewById(R.id.main_add_firstcity);
+        cityweather_add=(ImageButton)solo.getCurrentActivity().findViewById(R.id.cityweather_add);
+        cityweather_refresh=(ImageButton)solo.getCurrentActivity().findViewById(R.id.cityweather_refresh);
+        main_add_firstcity=(Button)solo.getCurrentActivity().findViewById(R.id.main_add_firstcity);
     }
 
     public void flag(){
@@ -40,15 +40,15 @@ public class MainActivityElement {
     }
 
     public void clickMain_add_firstcity(){
-        mSolo.clickOnView(main_add_firstcity);
+        solo.clickOnView(main_add_firstcity);
     }
 
     public void clickCityweather_add(){
-        mSolo.clickOnView(cityweather_add);
+        solo.clickOnView(cityweather_add);
     }
 
     public void clickCityweather_refresh(){
-        mSolo.clickOnView(cityweather_refresh);
+        solo.clickOnView(cityweather_refresh);
     }
 
 }

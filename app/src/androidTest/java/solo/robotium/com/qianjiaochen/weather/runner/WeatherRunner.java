@@ -5,6 +5,7 @@ import com.zutubi.android.junitreport.JUnitReportTestRunner;
 import junit.framework.TestSuite;
 
 import solo.robotium.com.qianjiaochen.weather.testcase.mainactivity.ClickAddButton;
+import solo.robotium.com.qianjiaochen.weather.testcase.mainactivity.ClickMainAddFirstButton;
 import solo.robotium.com.qianjiaochen.weather.testcase.mainactivity.ClickRefreshButton;
 
 /**
@@ -13,8 +14,9 @@ import solo.robotium.com.qianjiaochen.weather.testcase.mainactivity.ClickRefresh
 public class WeatherRunner extends JUnitReportTestRunner{
     public TestSuite getTestSuite(){
         TestSuite suite=new TestSuite();
-        suite.addTestSuite(ClickAddButton.class);
-        suite.addTestSuite(ClickRefreshButton.class);
+        suite.addTestSuite(ClickMainAddFirstButton.class);
+        //suite.addTestSuite(ClickAddButton.class);
+        //suite.addTestSuite(ClickRefreshButton.class);
         return suite;
     }
 }
