@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'jacoco'
 
+apply plugin: 'findbugs'
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
@@ -50,6 +52,23 @@ task jacocoTestReport(type:JacocoReport){//,dependsOn:"connectedAndroidTest"
     sourceDirectories = files(coverageSourceDirs)
     additionalClassDirs = files(coverageSourceDirs)
     executionData = files("$buildDir/outputs/code-coverage/connected/coverage.ec")
+}
+
+task findbugs(type: FindBugs,dependsOn:"connectedAndroidTest") {//
+    ignoreFailures = true
+    effort = "default"
+    reportLevel = "medium"
+    //过滤器
+    excludeFilter = new File("${project.rootDir}/findbug_filter.xml")
+    //这里填写项目classes目录
+    classes = files("${project.rootDir}/app/build/intermediates/classes")
+    source = fileTree('src/main/java')
+    classpath = files()
+    reports {
+        //只能开启一个
+        xml.enabled = true
+        html.enabled = false
+    }
 }
 
 

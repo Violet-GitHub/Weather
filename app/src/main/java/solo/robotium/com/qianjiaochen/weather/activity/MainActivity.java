@@ -1,5 +1,5 @@
 /**
- * Created by qianjiaochen on 16/6/11.
+ * Created by qianjiaochen on 16/6/20.
  Activity的生命周期:
  1.启动Activity：系统会先调用onCreate方法，然后调用onStart方法，最后调用onResume，Activity进入运行状态。
  2.当前Activity被其他Activity覆盖其上或被锁屏：系统会调用onPause方法，暂停当前Activity的执行。
