@@ -35,9 +35,6 @@ public class MainActivityElement {
         main_add_firstcity=(Button)solo.getCurrentActivity().findViewById(R.id.main_add_firstcity);
     }
 
-    public void flag(){
-
-    }
 
     public void clickMain_add_firstcity(){
         solo.clickOnView(main_add_firstcity);

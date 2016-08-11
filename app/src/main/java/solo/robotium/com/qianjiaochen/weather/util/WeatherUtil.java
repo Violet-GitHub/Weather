@@ -102,8 +102,8 @@ public class WeatherUtil{
             Log.e(TAG, mJSONObject.toString() + 1);
             mWeatherInfo.setCity(mJSONObject.getString("city"));
             mWeatherInfo.setCityId(mJSONObject.getString("cityid"));
-            mWeatherInfo.setTemp1(mJSONObject.getString("temp1"));
-            mWeatherInfo.setTemp2(mJSONObject.getString("temp2"));
+            mWeatherInfo.setTemp1(deleteSuffix(mJSONObject.getString("temp1")));
+            mWeatherInfo.setTemp2(deleteSuffix(mJSONObject.getString("temp2")));
             mWeatherInfo.setWeather(mJSONObject.getString("weather"));
             mWeatherInfo.setImg1(mJSONObject.getString("img1"));
             mWeatherInfo.setImg2(mJSONObject.getString("img2"));
@@ -129,6 +129,16 @@ public class WeatherUtil{
         }
 
         return mWeatherInfo;
+    }
+
+    /**
+     * 去掉str的后缀"°C"
+     * @param str
+     * @return
+     */
+    public String deleteSuffix(String str){
+        str=str.replace("℃","");
+        return str;
     }
 
     /*

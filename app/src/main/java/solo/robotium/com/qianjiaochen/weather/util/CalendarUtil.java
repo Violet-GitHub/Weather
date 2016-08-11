@@ -17,7 +17,7 @@ public class CalendarUtil {
 
 //    public static void main(String[] args){
 //        CalendarUtil mCalendarUtil=new CalendarUtil();
-//        mCalendarUtil.updateCalendar(2016,6);
+//        System.out.println(Calendar.getInstance().get(Calendar.DATE));
 //    }
 
     public CalendarInfo[][] updateCalendar(int year,int month){
@@ -25,6 +25,9 @@ public class CalendarUtil {
         int preYear=0;//上个月所在年份
         int preMonth=0;//上个月
         int preMonthDays=0;//上个月天数
+
+        int nextYear=0;
+        int nextMonth=0;
 
         //calendar 按照0-11月份来算
         Calendar myCalendar=Calendar.getInstance();
@@ -54,6 +57,15 @@ public class CalendarUtil {
             currentMonthDays=COMM_YEAR[month];
         }
 
+        //计算出下个月所在月份和年份
+        if(month==11){
+            nextMonth=0;
+            nextYear=year+1;
+        }else{
+            nextMonth=month+1;
+            nextYear=year;
+        }
+
         //二维数组的位置
         int currIndex=0;
         for (int i=0;i<6;i++){
@@ -62,13 +74,20 @@ public class CalendarUtil {
                 if(currIndex<week_num){
                     myCalendatInfo.day=preMonthDays-week_num+currIndex+1;
                     myCalendatInfo.currentMonth=false;
+                    myCalendatInfo.month=preMonth;
+                    myCalendatInfo.year=preYear;
                 }else if(currIndex>=week_num&&currIndex<(week_num+currentMonthDays)){
                     myCalendatInfo.day=currIndex-week_num+1;
                     myCalendatInfo.currentMonth=true;
+                    myCalendatInfo.month=month;
+                    myCalendatInfo.year=year;
                 }else{
                     myCalendatInfo.day=currIndex-week_num-currentMonthDays+1;
                     myCalendatInfo.currentMonth=false;
+                    myCalendatInfo.month=nextMonth;
+                    myCalendatInfo.year=nextYear;
                 }
+
                 calendarInfos[i][j]=myCalendatInfo;
                 //System.out.print(calendarInfos[i][j].day+",");
                 currIndex++;

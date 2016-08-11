@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -21,8 +23,6 @@ public class CalendarViewMySelf extends View{
     public int heightSize;
     public int calendarItemWidth;
     public int calendarItemHeight;
-    public int offSetW;
-    public int offSetH;
     public int weekItemHeight;
     public int weekItemWidth;
     public String[] weeks;//数组{日,一,二,三,四,五,六}
@@ -31,12 +31,12 @@ public class CalendarViewMySelf extends View{
     public CalendarUtil mCalendarUtil;
     public int todayYear;
     public int todayMonth;
+    public int today;
     public int curYear;
     public int curMonth;
+   // public Rect rect=new Rect();
     public Calendar mCalendar;
     public CalendarInfo[][] mCalendarInfos=null;
-
-
 
     public CalendarViewMySelf(Context context) {
         super(context);
@@ -63,8 +63,9 @@ public class CalendarViewMySelf extends View{
         mCalendar= Calendar.getInstance();
         todayYear=mCalendar.get(Calendar.YEAR);
         todayMonth=mCalendar.get(Calendar.MONTH);
-        curYear=todayYear;//初始化当前年份,在切换当前日历视图的时候,可以再次基础上进行修改
-        curMonth=todayMonth;//初始化当前月份,在切换当前日历视图的时候,可以再次基础上进行修改
+        today=mCalendar.get(Calendar.DATE);
+        curYear=todayYear;//初始化当前年份,在切换当前日历视图的时候,可以再此基础上进行修改
+        curMonth=todayMonth;//初始化当前月份,在切换当前日历视图的时候,可以再此基础上进行修改
         mCalendarInfos=mCalendarUtil.updateCalendar(todayYear,todayMonth);
         invalidate();
     }
@@ -93,24 +94,39 @@ public class CalendarViewMySelf extends View{
         drawCalendar(canvas);
     }
 
+    /**
+     * 画出星期
+     * @param canvas
+     */
     public void drawWeek(Canvas canvas){
         weeks=getResources().getStringArray(R.array.head_week);
         mPaint.setColor(getResources().getColor(R.color.black));
         mPaint.setTextSize(40);
         for(int i=0;i<7;i++){
-            int iPosX=i*weekItemWidth;
-            int iposY=weekItemHeight;
-            canvas.drawText(weeks[i],iPosX,iposY,mPaint);
+            int iPosX=i*weekItemWidth+weekItemWidth/2;
+            //Android的Canvas绘图，drawText里的origin是以baseline为基准的，直接以目标矩形的bottom传进drawText，字符位置会偏下
+            //int iposY=weekItemHeight;
+            FontMetricsInt fontMetrics = mPaint.getFontMetricsInt();
+            // 转载请注明出处：http://blog.csdn.net/hursing
+            int baseline = ( weekItemHeight+ 0 - fontMetrics.bottom - fontMetrics.top) / 2;
+            // 下面这行是实现水平居中，drawText对应改为传入targetRect.centerX()
+            mPaint.setTextAlign(Paint.Align.CENTER);
+            canvas.drawText(weeks[i],iPosX,baseline,mPaint);
         }
     }
 
+    /**
+     * 画出日历
+     * @param canvas
+     */
     public void drawCalendar(Canvas canvas){
         for (int i=0;i<6;i++){
             for (int j=0;j<7;j++){
                 CalendarInfo myCalendarInfo=mCalendarInfos[i][j];
                 mPaint.setTextSize(40);
-                int iPosX=j*calendarItemWidth;
-                int iPosY=(i+1)*calendarItemHeight+weekItemHeight;
+                int iPosX=j*calendarItemWidth+calendarItemWidth/2;
+                //Android的Canvas绘图，drawText里的origin是以baseline为基准的，直接以目标矩形的bottom传进drawText，字符位置会偏下
+                //int iPosY=i*calendarItemHeight+calendarItemHeight/2+weekItemHeight;
                 if(myCalendarInfo.currentMonth){
                     if (j == 0 || j == 6) {
                         mPaint.setColor(Color.parseColor("#fd3434"));
@@ -120,7 +136,17 @@ public class CalendarViewMySelf extends View{
                 }else{
                     mPaint.setColor(Color.parseColor("#a2a1a1"));
                 }
-                canvas.drawText(myCalendarInfo.day+"",iPosX,iPosY,mPaint);
+                FontMetricsInt fontMetrics = mPaint.getFontMetricsInt();
+                // 转载请注明出处：http://blog.csdn.net/hursing
+                int baseline = ( (i*calendarItemHeight+weekItemHeight)+ ((i+1)*calendarItemHeight+weekItemHeight) - fontMetrics.bottom - fontMetrics.top) / 2;
+                // 下面这行是实现水平居中，drawText对应改为传入targetRect.centerX()
+                mPaint.setTextAlign(Paint.Align.CENTER);
+                if(myCalendarInfo.day==today&&myCalendarInfo.month==todayMonth&&myCalendarInfo.year==todayYear){
+                    mPaint.setColor(Color.GREEN);
+                    canvas.drawText("今天",iPosX,baseline,mPaint);
+                    continue;
+                }
+                canvas.drawText(myCalendarInfo.day+"",iPosX,baseline,mPaint);
             }
         }
     }
@@ -135,10 +161,10 @@ public class CalendarViewMySelf extends View{
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         widthSize=MeasureSpec.getSize(widthMeasureSpec);
         heightSize=MeasureSpec.getSize(heightMeasureSpec);
-        calendarItemWidth=weekItemWidth=widthSize/7;
-        calendarItemHeight=weekItemHeight=heightSize/7;
-        offSetH=widthSize%7;
-        offSetW=heightSize%7;
+        int itemWidth=widthSize/7;
+        int itemHeight=heightSize/7;
+        calendarItemWidth=weekItemWidth=itemWidth;
+        calendarItemHeight=weekItemHeight=itemHeight;
     }
 
 

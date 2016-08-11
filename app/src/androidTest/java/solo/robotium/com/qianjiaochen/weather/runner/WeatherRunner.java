@@ -15,6 +15,7 @@ public class WeatherRunner extends JUnitReportTestRunner{
     public TestSuite getTestSuite(){
         TestSuite suite=new TestSuite();
         suite.addTestSuite(ClickMainAddFirstButton.class);
+        
         //suite.addTestSuite(ClickAddButton.class);
         //suite.addTestSuite(ClickRefreshButton.class);
         return suite;

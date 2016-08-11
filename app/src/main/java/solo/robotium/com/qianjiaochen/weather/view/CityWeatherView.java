@@ -25,7 +25,7 @@ public class CityWeatherView extends RelativeLayout {
     public ImageView weather_img;
 
     public TextView currentYM;//当前年月
-    public TextView pre,next;//
+    //public TextView pre,next;//
     public CalendarGallery calendarView;
 
     public CalendarViewMySelf[] mCalendarViewMySelfs=new CalendarViewMySelf[3];//日历视图集合
@@ -57,13 +57,13 @@ public class CityWeatherView extends RelativeLayout {
         weather_img=(ImageView)findViewById(R.id.weather_img);
 
         //初始化日历布局控件
-        pre=(TextView)findViewById(R.id.pre);
-        next=(TextView)findViewById(R.id.next);
+        //pre=(TextView)findViewById(R.id.pre);
+        //next=(TextView)findViewById(R.id.next);
         currentYM=(TextView)findViewById(R.id.currentYM);
         calendarView=(CalendarGallery)findViewById(R.id.calendarView);
 
-        pre.setOnClickListener(mOnClickListener);
-        next.setOnClickListener(mOnClickListener);
+        //pre.setOnClickListener(mOnClickListener);
+        //next.setOnClickListener(mOnClickListener);
         currentYM.setOnClickListener(mOnClickListener);
 
         mCalendarViewMySelfs[0]=new CalendarViewMySelf(mContext);
@@ -134,16 +134,16 @@ public class CityWeatherView extends RelativeLayout {
         @Override
         public void onClick(View v) {
             switch (v.getId()){
-                case R.id.pre:
-                    calendarView.onPreNextFling(-1);
-                    Toast.makeText(mContext,"pre",Toast.LENGTH_SHORT).show();
-                case R.id.next:
-                    calendarView.onPreNextFling(1);
-                    Toast.makeText(mContext,"next",Toast.LENGTH_SHORT).show();
-                    break;
-                case R.id.currentYM:
-                    Toast.makeText(mContext,"currentYM",Toast.LENGTH_SHORT).show();
-                    break;
+//                case R.id.pre:
+//                    calendarView.onPreNextFling(-1);
+//                    Toast.makeText(mContext,"pre",Toast.LENGTH_SHORT).show();
+//                case R.id.next:
+//                    calendarView.onPreNextFling(1);
+//                    Toast.makeText(mContext,"next",Toast.LENGTH_SHORT).show();
+//                    break;
+//                case R.id.currentYM:
+//                    Toast.makeText(mContext,"currentYM",Toast.LENGTH_SHORT).show();
+//                    break;
                 default:
                     break;
             }

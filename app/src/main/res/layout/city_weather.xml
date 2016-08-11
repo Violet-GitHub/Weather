@@ -83,21 +83,23 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal">
-            <TextView
-                android:id="@+id/pre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/pre"/>
+            <!--<TextView-->
+                <!--android:id="@+id/pre"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/pre"/>-->
             <TextView
                 android:id="@+id/currentYM"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:text="@string/currentYM"/>
-            <TextView
-                android:id="@+id/next"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/next"/>
+            <!--<TextView-->
+                <!--android:id="@+id/next"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/next"/>-->
         </LinearLayout>
 
         <solo.robotium.com.qianjiaochen.weather.view.CalendarGallery
